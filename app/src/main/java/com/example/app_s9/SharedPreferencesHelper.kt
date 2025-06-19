@@ -17,7 +17,11 @@ class SharedPreferencesHelper(context: Context) {
         const val KEY_USERNAME = "username"
         const val KEY_IS_FIRST_TIME = "is_first_time"
         const val KEY_USER_ID = "user_id"
+        const val KEY_NAME = "name"
+        const val KEY_AGE = "age"
+        const val KEY_EMAIL = "email"
         const val KEY_THEME_MODE = "theme_mode"
+        const val KEY_CONT_VISITS = "contador"
     }
     
     // Métodos para String

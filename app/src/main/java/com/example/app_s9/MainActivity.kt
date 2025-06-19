@@ -1,12 +1,15 @@
 package com.example.app_s9
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -17,7 +20,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var buttonSave: Button
     private lateinit var buttonLoad: Button
     private lateinit var buttonClear: Button
+    private lateinit var buttonClearCont: Button
+    private lateinit var buttonIrPerfil: Button
     private lateinit var textViewResult: TextView
+    private lateinit var textViewContador: TextView
+    private lateinit var modoOscuro: Switch
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -39,6 +47,12 @@ class MainActivity : AppCompatActivity() {
         
         // Verificar si es la primera vez que se abre la app
         checkFirstTime()
+
+        //Contador de visitas
+        contadorDeVisitas()
+
+        //Modo Oscuro
+        modeDark()
     }
     
     private fun initViews() {
@@ -46,7 +60,11 @@ class MainActivity : AppCompatActivity() {
         buttonSave = findViewById(R.id.buttonSave)
         buttonLoad = findViewById(R.id.buttonLoad)
         buttonClear = findViewById(R.id.buttonClear)
+        buttonClearCont = findViewById(R.id.buttonClearCont)
+        buttonIrPerfil = findViewById(R.id.buttonIrPerfil)
         textViewResult = findViewById(R.id.textViewResult)
+        textViewContador = findViewById(R.id.textViewContador)
+        modoOscuro = findViewById(R.id.modoOscuro)
     }
     
     private fun setupListeners() {
@@ -60,6 +78,15 @@ class MainActivity : AppCompatActivity() {
         
         buttonClear.setOnClickListener {
             clearAllData()
+        }
+
+        buttonClearCont.setOnClickListener {
+            resetCont()
+        }
+
+        buttonIrPerfil.setOnClickListener {
+            val intent = Intent(this, PerfilUserActivity::class.java)
+            startActivity(intent)
         }
     }
     
@@ -101,6 +128,34 @@ class MainActivity : AppCompatActivity() {
         
         if (isFirstTime) {
             Toast.makeText(this, "¡Bienvenido por primera vez!", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun contadorDeVisitas(){
+        var cont = sharedPreferencesHelper.getInt(SharedPreferencesHelper.KEY_CONT_VISITS, 0)
+        cont = cont + 1
+        sharedPreferencesHelper.saveInt(SharedPreferencesHelper.KEY_CONT_VISITS, cont)
+        textViewContador.text = "Visitas a la app: ${cont.toString()}"
+    }
+
+    private fun resetCont(){
+        var cont = 0
+        sharedPreferencesHelper.saveInt(SharedPreferencesHelper.KEY_CONT_VISITS, cont)
+        textViewContador.text = "Visitas a la app: ${cont.toString()}"
+    }
+
+    private fun modeDark(){
+        // Evento de cambio
+        modoOscuro.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                // Activado
+                Toast.makeText(this, "Modo oscuro activado", Toast.LENGTH_SHORT).show()
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                // Desactivado
+                Toast.makeText(this, "Modo oscuro desactivado", Toast.LENGTH_SHORT).show()
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
         }
     }
 }
