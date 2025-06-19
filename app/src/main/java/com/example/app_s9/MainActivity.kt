@@ -49,7 +49,12 @@ class MainActivity : AppCompatActivity() {
         checkFirstTime()
 
         //Contador de visitas
-        contadorDeVisitas()
+        if (savedInstanceState == null) {
+            // Solo contar si no es un reinicio
+            contadorDeVisitas()
+        }
+
+        showContador()
 
         //Modo Oscuro
         modeDark()
@@ -141,6 +146,12 @@ class MainActivity : AppCompatActivity() {
     private fun resetCont(){
         var cont = 0
         sharedPreferencesHelper.saveInt(SharedPreferencesHelper.KEY_CONT_VISITS, cont)
+        textViewContador.text = "Visitas a la app: ${cont.toString()}"
+    }
+
+    private fun showContador(){
+        var cont = sharedPreferencesHelper.getInt(SharedPreferencesHelper.KEY_CONT_VISITS, 0)
+        sharedPreferencesHelper.getInt(SharedPreferencesHelper.KEY_CONT_VISITS, cont)
         textViewContador.text = "Visitas a la app: ${cont.toString()}"
     }
 
