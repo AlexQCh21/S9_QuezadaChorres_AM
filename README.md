@@ -74,3 +74,14 @@ Las contribuciones son bienvenidas. Por favor:
 ## 📄 Licencia
 
 Este proyecto es de código abierto y está disponible bajo la Licencia MIT.
+<hr>
+<h1>Entrega terminada </h1>
+<img src="https://github.com/user-attachments/assets/a8a50996-c3d9-4432-bcf2-4bf85dc6b824" width="300px"/>
+<br>
+<h2>Cargar y guardar datos del perfil de usuario</h2>
+<img src="https://github.com/user-attachments/assets/9b1d0230-eb72-4316-b605-9569af26b2e0" width="300px"/>
+<br>
+<h2>Aplicando el modo oscuro</h2>
+<img src="https://github.com/user-attachments/assets/903c7080-d6ca-4578-b7d8-79e1967e63e3" width="300px"/>
+<br>
+
