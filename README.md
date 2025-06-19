@@ -76,6 +76,7 @@ Las contribuciones son bienvenidas. Por favor:
 Este proyecto es de código abierto y está disponible bajo la Licencia MIT.
 <hr>
 <h1>Entrega terminada </h1>
+<strong>Programador: </strong>Quezada Chorres Cesar Alexander<br>
 <img src="https://github.com/user-attachments/assets/a8a50996-c3d9-4432-bcf2-4bf85dc6b824" width="300px"/>
 <br>
 <h2>Cargar y guardar datos del perfil de usuario</h2>
